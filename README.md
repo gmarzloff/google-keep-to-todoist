@@ -5,6 +5,20 @@ single CSV file.
 
 This fork modifies the CSV output to todoist format for easy importing. CSV structure is based on the [todoist documentation](https://todoist.com/help/articles/how-to-format-your-csv-file-so-you-can-import-it-into-todoist).   
 
+| column  (case sensitive)|
+| --- |
+| TYPE |
+| CONTENT |
+| DESCRIPTION |
+| PRIORITY |
+| INDENT |
+| AUTHOR |
+| RESPONSIBLE |
+| DATE |
+| DATE_LANG |
+| TIMEZONE |
+| meta |
+
 ## Install
 1. Clone or download this repository
 1. Open a terminal to the repository folder (`google-keep-to-todoist`)
