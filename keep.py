@@ -10,7 +10,8 @@ notes = []
 now = datetime.now()
 csvout = "notes_%s.csv" % now.strftime("%Y-%m-%d_%H%M")
 writer = csv.writer(open(csvout, 'wb'))
-writer.writerow(['file','date', 'title', 'content'])
+writer.writerow(['TYPE', 'CONTENT', 'DESCRIPTION', 'PRIORITY', 'INDENT', 'AUTHOR', 'RESPONSIBLE', 'DATE', 'DATE_LANG', 'TIMEZONE', 'meta'])
+writer.writerow(['section', 'Google Keep Notes','','','','','','','','','view_style=board'])
 
 for file in files:
 	print(file)
@@ -36,9 +37,9 @@ for file in files:
 	
 	note = {
 		"date": xlDate,
-		"title": title,
-		"content": content
+		"content": title,
+		"description": content
 	}
-	writer.writerow([file, note['date'],note['title'],note['content']])
+	writer.writerow(['task', note['content'], note['description'], '', '', '', '', note['date'], '', '', ''])
 
 print('\n'+'-'*50 + '\nDone! %s notes saved to %s\n' % (len(files), csvout))
