@@ -1,3 +1,5 @@
+![](img/keep-todoist.png)!
+
 # Google Keep Scraper to Todoist
 Apparently there's no simple way to export your notes from Google Keep to CSV. 
 This script accepts the Keep folder Google Takeout archive, and outputs all of the Keep notes as lines in a 
@@ -48,3 +50,6 @@ In the top right of Todoist, click the three dots then "Import from template"
 
 ## Troubleshooting
 If you get an error about a missing dependency, be sure to run `pip install -r requirements.txt` prior to running the script so that it can download the dependencies needed.
+
+## Unofficial Status
+This script is not affiliated with Google or Todoist. 
