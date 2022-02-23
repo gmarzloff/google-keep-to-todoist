@@ -1,4 +1,4 @@
-![](img/keep-todoist.png)!
+![](img/keep-todoist.png)
 
 # Google Keep Scraper to Todoist
 Apparently there's no simple way to export your notes from Google Keep to CSV. 
