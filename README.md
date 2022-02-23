@@ -5,19 +5,19 @@ single CSV file.
 
 This fork modifies the CSV output to todoist format for easy importing. CSV structure is based on the [todoist documentation](https://todoist.com/help/articles/how-to-format-your-csv-file-so-you-can-import-it-into-todoist).   
 
-| column  (case sensitive)|
-| --- |
-| TYPE |
-| CONTENT |
-| DESCRIPTION |
-| PRIORITY |
-| INDENT |
-| AUTHOR |
-| RESPONSIBLE |
-| DATE |
-| DATE_LANG |
-| TIMEZONE |
-| meta |
+| column  (case sensitive)| defined in the conversion? |
+| --- | --- |
+| TYPE | Yes |
+| CONTENT | Yes |
+| DESCRIPTION | Yes |
+| PRIORITY | No |
+| INDENT | Yes, only for subtasks |
+| AUTHOR | No |
+| RESPONSIBLE | No |
+| DATE | No |
+| DATE_LANG | No |
+| TIMEZONE | No |
+| meta | view_style=board |
 
 ## Install
 1. Clone or download this repository
