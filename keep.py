@@ -9,6 +9,10 @@ notes = []
 sub_tasks_mode = False 	# for parsing checklists
 sub_tasks = []
 
+sub_tasks_count = 0
+checklist_count = 0
+parent_tasks_count = 0
+
 # Ask for section title
 print("Google Keep to Todoist CSV\n=================================")
 section_title = input("Enter section title [Google Keep Notes]:") or "Google Keep Notes"
@@ -42,16 +46,13 @@ for file in files:
 	try:
 		checklist = html.select(".list")[0].select(".text")
 		print("Checklist found. Converting to subtasks...")
+		checklist_count += 1
 		sub_tasks_mode = True
 		for item in checklist:
 			sub_tasks.append(item.text)
 		html.decompose()
 	except:
 		pass
-	
-	# Handle embedded images
-	# TODO
-	# collect base64 data in .attachments/contents[]
 	
 	# Convert linebreaks
 	for br in soup.find_all("br"):
@@ -64,13 +65,14 @@ for file in files:
 		"content": title,
 		"description": content
 	}
-	writer.writerow(['task', note['content'], note['description'], '', '', '', '', note['date'], '', '', ''])
-
+	writer.writerow(['task', note['content'], note['description'], '4', '', '', '', note['date'], '', '', ''])
+	parent_tasks_count += 1
+	
 	if sub_tasks_mode:
 		for task in sub_tasks:
-			writer.writerow(['task', task, '', '', '2', '', '', '', '', '', ''])
-			
+			writer.writerow(['task', task, '', '4', '2', '', '', '', '', '', ''])
+			sub_tasks_count += 1
 		sub_tasks = []
 		sub_tasks_mode = False
 	
-print('\n'+'-'*50 + '\nDone! %s notes saved to %s\n' % (len(files), csvout))
+print('\n'+'-'*50 + '\nDone! %s notes saved to %s.\n%s parent tasks created, %s checklists detected containing %s subtasks\n' % (len(files), csvout, parent_tasks_count, checklist_count, sub_tasks_count))
