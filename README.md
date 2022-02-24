@@ -44,9 +44,10 @@ In the top right of Todoist, click the three dots then "Import from template"
 
 ![Import](img/import.png)
 
-### Limitations:
+### Limitations & Notes:
 * The Todoist CSV structure does not allow for assigning tasks to projects, defining users to share the tasks with, or adding labels to the task.
 * Additionally, while an image can be pasted in manually to a task comment, there is no way to move Keep media to Todoist via a csv import.   
+* Todoist requires a title for every task, while Keep does not require a title for a note. If a Keep note does not have a title, then this script duplicates the first 150 characters of the note description as the note title (aka 'content' in Todoist-speak).
 
 ## Troubleshooting
 If you get an error about a missing dependency, be sure to run `pip install -r requirements.txt` prior to running the script so that it can download the dependencies needed.
