@@ -12,7 +12,7 @@ This fork modifies the CSV output to todoist format for easy importing. CSV stru
 | TYPE | Yes |
 | CONTENT | Yes |
 | DESCRIPTION | Yes |
-| PRIORITY | No |
+| PRIORITY | Yes, 4 (lowest) |
 | INDENT | Yes, only for subtasks |
 | AUTHOR | No |
 | RESPONSIBLE | No |
