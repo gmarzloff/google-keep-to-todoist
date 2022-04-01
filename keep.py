@@ -66,7 +66,9 @@ for file_path in files:
     notes.append(note)
     
     # print(note.description)
-    
+
+print("Google Keep to Todoist CSV\n=================================")
+
 print(len(notes), "note objects loaded.\n\n")
 
 # Run Label statistics
@@ -75,28 +77,29 @@ notes_with_labels = [note for note in notes if label_attr(note) != None]
 labels_from_list = [label['name'] for note_labels in [note.labels for note in notes_with_labels] for label in note_labels]
 labels_summary = Counter(labels_from_list)
 label_freq = labels_summary.most_common()
-print("Label (Count)")
-[print(item[0], item[1]) for item in label_freq]
-print("Total notes with labels:",len(notes_with_labels),"\nKeep supports a one-note-to-many-labels relationship\n\n")
 
-print("Todoist cannot import labels via its csv upload mechanism. If you use labels to categorize your notes in Keep,",
-      "consider automatically creating Todoist projects for all Keep labels, and placing")
+print("Total notes with labels:",len(notes_with_labels),"\n\nKeep supports a one-note-to-many-labels relationship.\n")
 
+print("Todoist cannot import labels via its csv upload mechanism. If you use labels to categorize\nyour notes in Keep,",
+      "consider automatically creating Todoist projects based on Keep labels.\n"
+      "Each project can have a maximum of 300 tasks, including subtasks.\n"
+      "This script will automatically convert Keep checklists into a list of subtasks in Todoist.\n\n")
 
-# new_list = [list(g) for k, g in itertools.groupby(sorted(notes, key=get_attr), get_attr)]
-# print("List groups:")
-# print(new_list)
+if len(labels_from_list) > 0:
+    print("Some Keep notes are tagged with labels:")
+    print("Label Name (Count)")
+    [print("%d. " % i, label_freq[i][0], "(%d)" % (label_freq[i][1])) for i in range(len(label_freq))]
+    print("\nIf you would like tasks of one or more labels to be exported as its own csv, enter the number(s) separated by commas.\n"
+          "For example, if you have a \"Books\" label with 10 notes, you could create a new \"Books\" project in Todoist and import\n"
+          "the list of 10 notes to that project. Any remaining notes will be exported into other csv(s).\n")
 
-
-#[n for n in notes if n.label != None]
 
 # Prep CSV file
 now = datetime.now()
 create_new_csv_file()
 
 # User inputs
-print("Google Keep to Todoist CSV\n=================================")
-section_title = input("Enter section title [Google Keep Notes]:") or "Google Keep Notes"
+section_title = input("Enter a section title that will be created if it does not exist [Google Keep Notes]:") or "Google Keep Notes"
 max_task_count_per_csv_file = int(input("Enter max task count per file [100]:") or 100)
 
 
